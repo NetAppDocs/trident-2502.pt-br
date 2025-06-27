@@ -1,0 +1,237 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/requirements.html 
+keywords: trident requirements, supported front ends, supported backends, kubernetes cluster, cluster requirements, version requirements, supported versions, host configuration, host os, system configuration, host operating system, fsx, ports, csi, images, orchestrators, storage systems, feature, kubernetes 
+summary: Antes de instalar o Trident, você deve rever estes requisitos gerais do sistema. Backends específicos podem ter requisitos adicionais. 
+---
+= Requisitos
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de instalar o Trident, você deve rever estes requisitos gerais do sistema. Backends específicos podem ter requisitos adicionais.
+
+
+
+== Informações críticas sobre o Trident
+
+*Você deve ler as seguintes informações críticas sobre o Trident.*
+
+.<strong> informações críticas sobre o Trident </strong>
+[%collapsible%open]
+====
+[]
+=====
+* O Kubernetes 1,32 agora é compatível com o Trident. Atualize o Trident antes de atualizar o Kubernetes.
+* O Trident reforça estritamente o uso de configuração multipathing em ambientes SAN, com um valor recomendado de `find_multipaths: no` no arquivo multipath.conf.
++
+O uso de configuração não multipathing ou o uso `find_multipaths: yes` de ou `find_multipaths: smart` valor no arquivo multipath.conf resultará em falhas de montagem. A Trident recomenda o uso de `find_multipaths: no` desde a versão 21,07.
+
+
+
+=====
+====
+
+
+== Frontens suportados (orquestradores)
+
+O Trident é compatível com vários mecanismos de contêiner e orquestradores, incluindo os seguintes:
+
+* Anthos On-Prem (VMware) e Anthos em bare metal 1,16
+* Kubernetes 1,26 - 1,32
+* OpenShift 4,10 - 4,18
+* Rancher Kubernetes Engine 2 (RKE2) v1.26.7-rke2r1, v1.28.5-rke2r1
+
+
+O operador Trident é suportado com estas versões:
+
+* Anthos On-Prem (VMware) e Anthos em bare metal 1,16
+* Kubernetes 1,26 - 1,32
+* OpenShift 4,10 - 4,18
+* Rancher Kubernetes Engine 2 (RKE2) v1.26.7-rke2r1, v1.28.5-rke2r1
+
+
+O Trident também trabalha com uma série de outras ofertas do Kubernetes totalmente gerenciadas e autogeridas, incluindo o Google Kubernetes Engine (GKE), o Amazon Elastic Kubernetes Services (EKS), o
+
+O Trident e o ONTAP podem ser usados como um provedor de storage para link:https://kubevirt.io/["KubeVirt"]o .
+
+
+WARNING: Antes de atualizar um cluster do Kubernetes do 1,25 para o 1,26 ou posterior que tenha o Trident instalado, link:../trident-managing-k8s/upgrade-operator.html#upgrade-a-helm-installation["Atualize uma instalação do Helm"]consulte a .
+
+
+
+== Backends suportados (armazenamento)
+
+Para usar o Trident, você precisa de um ou mais dos seguintes backends suportados:
+
+* Amazon FSX para NetApp ONTAP
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Google Cloud NetApp volumes
+* NetApp All SAN Array (ASA)
+* Versões de cluster FAS, AFF ou ASA R2 no local com suporte limitado do NetApp. link:https://mysupport.netapp.com/site/info/version-support["Suporte à versão de software"]Consulte .
+* Software NetApp HCI/Element 11 ou superior
+
+
+
+
+== Suporte ao Trident para virtualização KubeVirt e OpenShift
+
+.Drivers de armazenamento suportados:
+O Trident suporta os seguintes drivers ONTAP para virtualização KubeVirt e OpenShift:
+
+* ONTAP-nas
+* ONTAP-nas-economia
+* ONTAP-san (iSCSI, FCP, NVMe em TCP)
+* ONTAP-San-Economy (apenas iSCSI)
+
+
+.Pontos a considerar:
+* Atualize a classe de armazenamento para ter o `fsType` parâmetro (por exemplo: `fsType: "ext4"`) No ambiente de virtualização OpenShift. Se necessário, defina o modo de volume para bloquear explicitamente usando o `volumeMode=Block` parâmetro no `dataVolumeTemplates` para notificar CDI para criar volumes de dados de bloco.
+* _RWX modo de acesso para drivers de armazenamento em bloco_: Os drivers ONTAP-San (iSCSI, NVMe/TCP, FC) e ONTAP-san-Economy (iSCSI) são suportados apenas com "VolumeMode: Block" (dispositivo bruto). Para esses drivers, o `fstype` parâmetro não pode ser usado porque os volumes são fornecidos no modo de dispositivo bruto.
+* Para fluxos de trabalho de migração em tempo real em que o modo de acesso RWX é necessário, essas combinações são suportadas:
++
+** DE NFS `volumeMode=Filesystem`
+** ISCSI `volumeMode=Block` (dispositivo bruto)
+** NVMe/TCP `volumeMode=Block` (dispositivo bruto)
+** FC `volumeMode=Block` (dispositivo bruto)
+
+
+
+
+
+
+== Requisitos de recursos
+
+A tabela abaixo resume os recursos disponíveis com esta versão do Trident e as versões do Kubernetes compatíveis.
+
+[cols="3"]
+|===
+| Recurso | Versão do Kubernetes | É necessário ter portões? 
+
+
+| Trident  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| Instantâneos de volume  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| PVC a partir de instantâneos de volume  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| Redimensionamento iSCSI PV  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| ONTAP bidirectional CHAP  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| Políticas de exportação dinâmica  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| Operador Trident  a| 
+1,26 - 1,32
+ a| 
+Não
+
+
+
+| Topologia de CSI  a| 
+1,26 - 1,32
+ a| 
+Não
+
+|===
+
+
+== Sistemas operacionais de host testados
+
+Embora o Trident não suporte oficialmente sistemas operacionais específicos, sabe-se que os seguintes procedimentos funcionam:
+
+* Versões do Red Hat Enterprise Linux CoreOS (RHCOS) suportadas pela OpenShift Container Platform (AMD64 e ARM64)
+* RHEL 8 OU SUPERIOR (AMD64 E ARM64)
++
+
+NOTE: O NVMe/TCP requer o RHEL 9 ou posterior.
+
+* Ubuntu 22,04 ou posterior (AMD64 e ARM64)
+* Windows Server 2022
+
+
+Por padrão, o Trident é executado em um contentor e, portanto, será executado em qualquer trabalhador Linux. No entanto, esses funcionários precisam ser capazes de montar os volumes que o Trident fornece usando o cliente NFS padrão ou iniciador iSCSI, dependendo dos backends que você está usando.
+
+O `tridentctl` utilitário também é executado em qualquer uma dessas distribuições do Linux.
+
+
+
+== Configuração de host
+
+Todos os nós de trabalho no cluster do Kubernetes precisam ser capazes de montar os volumes provisionados para os pods. Para preparar os nós de trabalho, é necessário instalar ferramentas NFS, iSCSI ou NVMe com base na seleção de driver.
+
+link:../trident-use/worker-node-prep.html["Prepare o nó de trabalho"]
+
+
+
+== Configuração do sistema de storage
+
+O Trident pode exigir alterações em um sistema de storage antes que uma configuração de back-end possa usá-lo.
+
+link:../trident-use/backends.html["Configurar backends"]
+
+
+
+== Portas Trident
+
+O Trident requer acesso a portas específicas para comunicação.
+
+link:../trident-reference/ports.html["Portas Trident"]
+
+
+
+== Imagens de contêineres e versões correspondentes do Kubernetes
+
+Para instalações com ar-gapped, a lista a seguir é uma referência das imagens de contentor necessárias para instalar o Trident. Use o `tridentctl images` comando para verificar a lista de imagens de contentor necessárias.
+
+[cols="2"]
+|===
+| Versões do Kubernetes | Imagem do recipiente 
+
+
+| v1.26.0, v1.27.0, v1.28.0, v1.29.0, v1.30.0, v1.31.0, v1.32.0  a| 
+* docker.io/NetApp/Trident:25.02.0
+* docker.io/NetApp/Trident-AutoSupport:25,02
+* provisionador do registry.k8s.io/sig-storage/csi:v5,2.0
+* registry.k8s.io/sig-storage/csi-attacher:v4,8.0
+* registry.k8s.io/sig-storage/csi-resizer:v1.13.1
+* registry.k8s.io/sig-storage/csi-snapshotter:v8,2.0
+* registry.k8s.io/sig-storage/csi-node-driver-registrador:v2.13.0
+* docker.io/NetApp/Trident-operador:25.02.0 (opcional)
+
+
+|===

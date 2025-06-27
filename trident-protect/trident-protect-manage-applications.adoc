@@ -1,0 +1,134 @@
+---
+sidebar: sidebar 
+permalink: trident-protect/trident-protect-manage-applications.html 
+keywords: appvault, data protection, custom resource, namespace, application, cluster 
+summary: Você pode tornar o Trident Protect ciente de um aplicativo que deseja gerenciar criando um CR de aplicativo e um CR de AppVault associado. 
+---
+= Defina um aplicativo para gerenciamento com o Trident Protect
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode definir um aplicativo que deseja gerenciar com o Trident Protect criando um CR de aplicativo e um CR de AppVault associado.
+
+
+
+== Crie um AppVault CR
+
+Você precisa criar um AppVault CR que será usado ao executar operações de proteção de dados no aplicativo, e o AppVault CR precisa residir no cluster onde o Trident Protect está instalado. O AppVault CR é específico para o seu ambiente; para exemplos do AppVault CRS, consulte link:trident-protect-appvault-custom-resources.html["Recursos personalizados do AppVault."]
+
+
+
+== Definir uma aplicação
+
+Você precisa definir cada aplicativo que deseja gerenciar com o Trident Protect. Você pode definir um aplicativo para gerenciamento criando manualmente um CR de aplicativo ou usando a CLI Trident Protect.
+
+[role="tabbed-block"]
+====
+.Adicione uma aplicação utilizando um CR
+--
+.Passos
+. Criar o ficheiro CR da aplicação de destino:
++
+.. Crie o arquivo de recurso personalizado (CR) e nomeie-o (por exemplo, `maria-app.yaml` ).
+.. Configure os seguintes atributos:
++
+*** *metadata.name*: (_required_) o nome do recurso personalizado do aplicativo. Observe o nome escolhido porque outros arquivos CR necessários para operações de proteção referem-se a esse valor.
+*** *spec.includedNamespaces*: (_required_) Use o seletor de namespace e rótulo para especificar os namespaces e recursos que o aplicativo usa. O namespace do aplicativo deve fazer parte dessa lista. O seletor de etiquetas é opcional e pode ser usado para filtrar recursos dentro de cada namespace especificado.
+*** *spec.includedClusterScopedResources*: (_Optional_) Use este atributo para especificar recursos com escopo de cluster a serem incluídos na definição do aplicativo. Esse atributo permite que você selecione esses recursos com base em seu grupo, versão, tipo e rótulos.
++
+**** *GroupVersionKind*: (_required_) especifica o grupo API, a versão e o tipo do recurso com escopo de cluster.
+**** *LabelSeletor*: (_Opcional_) filtra os recursos com escopo de cluster com base em seus rótulos.
+
+
+*** *metadata.annotations.protect.trident.netapp.io/skip-vm-freeze*: (_Optional_) esta anotação só é aplicável a aplicações definidas a partir de máquinas virtuais, como em ambientes KubeVirt, onde os congelamentos do sistema de arquivos ocorrem antes dos instantâneos. Especifique se este aplicativo pode gravar no sistema de arquivos durante um snapshot. Se definido como verdadeiro, o aplicativo ignora a configuração global e pode gravar no sistema de arquivos durante um instantâneo. Se definido como false, o aplicativo ignora a configuração global e o sistema de arquivos é congelado durante um snapshot. Se especificado mas o aplicativo não tiver máquinas virtuais na definição do aplicativo, a anotação é ignorada. Se não for especificado, o aplicativo segue o link:trident-protect-requirements.html#protecting-data-with-kubevirt-vms["Definição Global Trident Protect Freeze (congelamento global)"].
++
+[NOTE]
+====
+Se você precisar aplicar essa anotação depois que um aplicativo já tiver sido criado, você pode usar o seguinte comando:
+
+[source, console]
+----
+kubectl annotate application -n <application CR namespace> <application CR name> protect.trident.netapp.io/skip-vm-freeze="true"
+----
+====
++
+Exemplo YAML:
+
++
+[source, yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  annotations:
+    protect.trident.netapp.io/skip-vm-freeze: "false"
+  name: my-app-name
+  namespace: my-app-namespace
+spec:
+  includedNamespaces:
+    - namespace: namespace-1
+      labelSelector:
+        matchLabels:
+          app: example-app
+    - namespace: namespace-2
+      labelSelector:
+        matchLabels:
+          app: another-example-app
+  includedClusterScopedResources:
+    - groupVersionKind:
+        group: rbac.authorization.k8s.io
+        kind: ClusterRole
+        version: v1
+      labelSelector:
+        matchLabels:
+          mylabel: test
+
+----
+
+
+
+
+. Depois de criar a aplicação CR para corresponder ao seu ambiente, aplique o CR. Por exemplo:
++
+[source, console]
+----
+kubectl apply -f maria-app.yaml
+----
+
+
+--
+.Adicione um aplicativo usando a CLI
+--
+.Passos
+. Crie e aplique a definição do aplicativo usando um dos exemplos a seguir, substituindo valores entre parênteses por informações do ambiente. Você pode incluir namespaces e recursos na definição do aplicativo usando listas separadas por vírgulas com os argumentos mostrados nos exemplos.
++
+Opcionalmente, você pode usar uma anotação ao criar um aplicativo para especificar se o aplicativo pode gravar no sistema de arquivos durante um snapshot. Isso só se aplica a aplicativos definidos a partir de máquinas virtuais, como em ambientes KubeVirt, onde os congelamentos do sistema de arquivos ocorrem antes dos snapshots. Se você definir a anotação como `true`, o aplicativo ignora a configuração global e pode gravar no sistema de arquivos durante um instantâneo. Se você defini-lo como `false`, o aplicativo ignora a configuração global e o sistema de arquivos é congelado durante um snapshot. Se utilizar a anotação mas a aplicação não tiver máquinas virtuais na definição da aplicação, a anotação é ignorada. Se não utilizar a anotação, a aplicação segue a link:trident-protect-requirements.html#protecting-data-with-kubevirt-vms["Definição Global Trident Protect Freeze (congelamento global)"].
+
++
+Para especificar a anotação quando você usa a CLI para criar um aplicativo, você pode usar o `--annotation` sinalizador.
+
++
+** Crie o aplicativo e use a configuração global para o comportamento de congelamento do sistema de arquivos:
++
+[source, console]
+----
+tridentctl-protect create application <my_new_app_cr_name> --namespaces <namespaces_to_include> --csr <cluster_scoped_resources_to_include> --namespace <my-app-namespace>
+----
+** Crie o aplicativo e configure a configuração do aplicativo local para o comportamento de congelamento do sistema de arquivos:
++
+[source, console]
+----
+tridentctl-protect create application <my_new_app_cr_name> --namespaces <namespaces_to_include> --csr <cluster_scoped_resources_to_include> --namespace <my-app-namespace> --annotation protect.trident.netapp.io/skip-vm-freeze=<"true"|"false">
+----
+
+
+
+
+--
+====
