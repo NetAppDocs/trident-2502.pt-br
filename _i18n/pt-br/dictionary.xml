@@ -905,7 +905,6 @@
   <block id="710f95d40d121f27f89b0faa6e178133" category="paragraph">O Trident é compatível com vários mecanismos de contêiner e orquestradores, incluindo os seguintes:</block>
   <block id="7cc1edf2116d94e97b8f4a69079de132" category="list-text">Anthos On-Prem (VMware) e Anthos em bare metal 1,16</block>
   <block id="30712450d512dae0e7becb73c6a439fb" category="list-text">Kubernetes 1,26 - 1,32</block>
-  <block id="d858eab1cb0b74aa1e6d052d7c06bd76" category="list-text">OpenShift 4,10 - 4,18</block>
   <block id="42113cf11e30b764619d3a98db65262d" category="list-text">Rancher Kubernetes Engine 2 (RKE2) v1.26.7-rke2r1, v1.28.5-rke2r1</block>
   <block id="201eb37826a33e35adff9119f25946bd" category="paragraph">O operador Trident é suportado com estas versões:</block>
   <block id="e42907190e2666646d57ade5c061e6e2" category="paragraph">O Trident também trabalha com uma série de outras ofertas do Kubernetes totalmente gerenciadas e autogeridas, incluindo o Google Kubernetes Engine (GKE), o Amazon Elastic Kubernetes Services (EKS), o</block>
@@ -5498,4 +5497,6 @@
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">Compartilhar volumes NFS em namespaces</block>
   <block id="62486fa65fc31c383ace8989549632ad" category="sidebar">Use snapshots</block>
   <block id="b71ccf1062cee8c376a7eb37e3c42603" category="cell">Ativar encriptação LUKS. <block ref="569f9f91cdcc19909b8acbf6f423daf7" category="inline-link-macro-rx"></block>Consulte a .</block>
+  <block id="f7e1bdb9d12dcb4909e8a56dd591da30" category="list-text">OpenShift 4.13 - 4.18</block>
+  <block id="9655e6779bbfb76d89c5ff39269da4db" category="list-text">OpenShift 4.13-4.18</block>
 </blocks>
