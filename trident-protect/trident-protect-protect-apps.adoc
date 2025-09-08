@@ -201,16 +201,17 @@ Certifique-se de que a expiração do token de sessão da AWS seja suficiente pa
 ** *Spec.snapshotRetention*: O número de instantâneos a reter. Zero indica que nenhum instantâneo deve ser criado.
 ** *spec.granularity*: a frequência em que o horário deve ser executado. Valores possíveis, juntamente com campos associados obrigatórios:
 +
-*** `hourly` (requer que você `spec.minute` especifique )
-*** `daily` (requer que você especifique `spec.minute` e `spec.hour`)
-*** `weekly` (requer especificar `spec.minute, spec.hour`, e `spec.dayOfWeek`)
-*** `monthly` (requer especificar `spec.minute, spec.hour`, e `spec.dayOfMonth`)
+*** `Hourly`(requer que você especifique `spec.minute` )
+*** `Daily`(requer que você especifique `spec.minute` e `spec.hour` )
+*** `Weekly`(requer que você especifique `spec.minute, spec.hour` , e `spec.dayOfWeek` )
+*** `Monthly`(requer que você especifique `spec.minute, spec.hour` , e `spec.dayOfMonth` )
+*** `Custom`
 
 
-** *Spec.dayOfMonth*: (_Optional_) o dia do mês (1 - 31) em que a programação deve ser executada. Este campo é necessário se a granularidade estiver definida como `monthly`.
-** *Spec.DayOfWeek*: (_Optional_) o dia da semana (0 - 7) em que o horário deve ser executado. Os valores de 0 ou 7 indicam domingo. Este campo é necessário se a granularidade estiver definida como `weekly`.
-** *Spec.hour*: (_Optional_) a hora do dia (0 - 23) em que o horário deve ser executado. Este campo é necessário se a granularidade estiver definida como `daily`, `weekly` `monthly` ou .
-** *Spec.minute*: (_Optional_) o minuto da hora (0 - 59) que o horário deve ser executado. Este campo é necessário se a granularidade estiver definida como `hourly`, , `daily` `weekly` , ou `monthly`.
+** *spec.dayOfMonth*: (_Opcional_) O dia do mês (1 - 31) em que o agendamento deve ser executado. Este campo é obrigatório se a granularidade estiver definida como `Monthly` .
+** *spec.dayOfWeek*: (_Opcional_) O dia da semana (0 - 7) em que a programação deve ser executada. Valores de 0 ou 7 indicam domingo. Este campo é obrigatório se a granularidade estiver definida como `Weekly` .
+** *spec.hour*: (_Opcional_) A hora do dia (0 - 23) em que a programação deve ser executada. Este campo é obrigatório se a granularidade estiver definida como `Daily` , `Weekly` , ou `Monthly` .
+** *spec.minute*: (_Opcional_) O minuto da hora (0 - 59) em que a programação deve ser executada. Este campo é obrigatório se a granularidade estiver definida como `Hourly` , `Daily` , `Weekly` , ou `Monthly` .
 +
 [source, yaml]
 ----
@@ -226,7 +227,7 @@ spec:
   appVaultRef: appvault-name
   backupRetention: "15"
   snapshotRetention: "15"
-  granularity: <monthly>
+  granularity: Monthly
   dayOfMonth: "1"
   dayOfWeek: "0"
   hour: "0"
