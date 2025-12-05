@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-protect/trident-protect-customize-installation.html 
-keywords: customize, trident protect, resource limits, security context constraints, SCC, NetApp AutoSupport, proxy connection, helm, helm chart, helm upgrade 
+keywords: customize, trident Protect, resource limits, security context constraints, SCC, NetApp AutoSupport, proxy connection, helm, helm chart, helm upgrade 
 summary: Personalize as configurações padrão do Trident Protect para atender às suas necessidades específicas. 
 ---
 = Personalize a instalação do Trident Protect
@@ -16,13 +16,13 @@ Você pode personalizar a configuração padrão do Trident Protect para atender
 
 
 
-== Especifique os limites de recursos do contêiner do Trident Protect
+== Especifique os limites de recursos do contêiner Trident Protect.
 
-Você pode usar um arquivo de configuração para especificar limites de recursos para contentores do Trident Protect depois de instalar o Trident Protect. A definição de limites de recursos permite controlar quanto dos recursos do cluster são consumidos pelas operações do Trident Protect.
+Você pode usar um arquivo de configuração para especificar limites de recursos para os contêineres do Trident Protect após a instalação do Trident Protect. A definição de limites de recursos permite controlar a quantidade de recursos do cluster que são consumidos pelas operações do Trident Protect.
 
 .Passos
 . Crie um arquivo chamado `resourceLimits.yaml`.
-. Preencha o arquivo com opções de limite de recursos para contentores do Trident Protect de acordo com as necessidades do seu ambiente.
+. Preencha o arquivo com as opções de limite de recursos para os contêineres do Trident Protect de acordo com as necessidades do seu ambiente.
 +
 O seguinte exemplo de arquivo de configuração mostra as configurações disponíveis e contém os valores padrão para cada limite de recursos:
 
@@ -89,7 +89,7 @@ helm upgrade trident-protect -n trident-protect netapp-trident-protect/trident-p
 
 == Personalizar restrições de contexto de segurança
 
-Você pode usar um arquivo de configuração para modificar o OpenShift security Context constraint (SCCs) para Trident Protect Containers depois de instalar o Trident Protect. Essas restrições definem restrições de segurança para pods em um cluster Red Hat OpenShift.
+Você pode usar um arquivo de configuração para modificar as restrições de contexto de segurança (SCCs) do OpenShift para contêineres Trident Protect após instalar o Trident Protect. Essas restrições definem as limitações de segurança para os pods em um cluster Red Hat OpenShift.
 
 .Passos
 . Crie um arquivo chamado `sccconfig.yaml`.
@@ -134,16 +134,16 @@ Isso substituirá os valores padrão pelos especificados no `sccconfig.yaml` arq
 
 
 
-== Configurar conexões NetApp AutoSupport para Trident Protect
+== Configure as conexões NetApp AutoSupport para o Trident Protect.
 
-Você pode alterar a maneira como o Trident Protect se coneta ao suporte da NetApp para fazer upload de pacotes de suporte configurando um proxy para a conexão. Você pode configurar o proxy para usar uma conexão segura ou insegura com base em suas necessidades.
+Você pode alterar a forma como o Trident Protect se conecta ao Suporte da NetApp para enviar pacotes de suporte, configurando um proxy para a conexão.  Você pode configurar o proxy para usar uma conexão segura ou insegura, de acordo com suas necessidades.
 
 [role="tabbed-block"]
 ====
 .Configure uma conexão proxy segura
 --
 .Passos
-. Configurar uma conexão proxy segura para carregamentos de pacotes de suporte do Trident Protect:
+. Configure uma conexão proxy segura para o envio de pacotes de suporte do Trident Protect:
 +
 [source, console]
 ----
@@ -155,7 +155,7 @@ helm upgrade trident-protect -n trident-protect netapp-trident-protect/trident-p
 .Configure uma conexão proxy insegura
 --
 .Passos
-. Configure uma conexão proxy insegura para carregamentos de pacotes de suporte do Trident Protect que ignoram a verificação TLS:
+. Configure uma conexão proxy insegura para uploads de pacotes de suporte do Trident Protect que ignore a verificação TLS:
 +
 [source, console]
 ----
@@ -167,9 +167,9 @@ helm upgrade trident-protect -n trident-protect netapp-trident-protect/trident-p
 ====
 
 
-== Restringir os pods do Trident Protect a nós específicos
+== Restrinja os pods do Trident Protect a nós específicos.
 
-Você pode usar a restrição de seleção de nó do Kubernetes nodeSeletor para controlar quais dos seus nós estão qualificados para executar pods do Trident Protect, com base em rótulos de nó. Por padrão, o Trident Protect está restrito a nós que estão executando o Linux. Você pode personalizar ainda mais essas restrições dependendo de suas necessidades.
+Você pode usar a restrição de seleção de nós `nodeSelector` do Kubernetes para controlar quais de seus nós são elegíveis para executar pods do Trident Protect, com base nos rótulos dos nós. Por padrão, o Trident Protect é restrito a nós que executam Linux. Você pode personalizar ainda mais essas restrições de acordo com suas necessidades.
 
 .Passos
 . Crie um arquivo chamado `nodeSelectorConfig.yaml`.
@@ -195,12 +195,12 @@ Isso substitui as restrições padrão com as que você especificou no `nodeSele
 
 
 
-== Desativar carregamentos diários de pacotes Trident Protect AutoSupport
+== Desative os uploads diários do pacote Trident Protect AutoSupport.
 
-Opcionalmente, você pode desativar os carregamentos diários programados do pacote de suporte do Trident Protect AutoSupport.
+Opcionalmente, você pode desativar os uploads diários agendados do pacote de suporte Trident Protect AutoSupport .
 
 
-NOTE: Por padrão, o Trident Protect coleta informações de suporte que ajudam em todos os casos de suporte da NetApp que você possa abrir, incluindo logs, métricas e informações de topologia sobre clusters e aplicativos gerenciados. O Trident Protect envia esses pacotes de suporte ao NetApp diariamente. Você pode manualmente link:trident-protect-generate-support-bundle.html["gerar um pacote de suporte"] a qualquer momento.
+NOTE: Por padrão, o Trident Protect coleta informações de suporte que auxiliam em quaisquer chamados de suporte da NetApp que você possa abrir, incluindo logs, métricas e informações de topologia sobre clusters e aplicativos gerenciados.  A Trident Protect envia esses pacotes de suporte para a NetApp diariamente.  Você pode fazer isso manualmente.link:trident-protect-generate-support-bundle.html["gerar um pacote de suporte"] a qualquer hora.
 
 .Passos
 . Crie um arquivo chamado `autosupportconfig.yaml`.

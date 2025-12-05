@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: trident-protect/trident-protect-appvault-custom-resources.html 
 keywords: trident. appvault, custom, protect, kubernetes 
-summary: 'O bucket custom resource (CR) do Trident Protect é conhecido como AppVault. AppVaults são a representação declarativa do fluxo de trabalho do Kubernetes de um bucket de storage.' 
+summary: 'O recurso personalizado (CR) do bucket para o Trident Protect é conhecido como AppVault. Os AppVaults são a representação declarativa do fluxo de trabalho do Kubernetes para um bucket de armazenamento.' 
 ---
-= Use objetos do Trident Protect AppVault para gerenciar buckets
+= Use objetos do Trident Protect AppVault para gerenciar buckets.
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: 'O bucket custom resource (CR) do Trident Protect é conhecido como App
 
 
 [role="lead"]
-O bucket custom resource (CR) do Trident Protect é conhecido como AppVault. Os objetos AppVault são a representação declarativa do fluxo de trabalho do Kubernetes de um bucket de storage. Um AppVault CR contém as configurações necessárias para que um bucket seja usado em operações de proteção, como backups, snapshots, operações de restauração e replicação do SnapMirror. Apenas os administradores podem criar AppVaults.
+O recurso personalizado (CR) do bucket para o Trident Protect é conhecido como AppVault. Os objetos do AppVault são a representação declarativa do fluxo de trabalho do Kubernetes de um bucket de armazenamento. Um AppVault CR contém as configurações necessárias para que um bucket seja usado em operações de proteção, como backups, snapshots, operações de restauração e replicação do SnapMirror . Somente administradores podem criar AppVaults.
 
-Você precisa criar um AppVault CR manualmente ou usando a linha de comando ao executar operações de proteção de dados em um aplicativo, e o AppVault CR precisa residir no cluster onde o Trident Protect está instalado. O AppVault CR é específico para o seu ambiente; você pode usar os exemplos nesta página como um guia ao criar o AppVault CRS.
+É necessário criar um AppVault CR manualmente ou usando a linha de comando ao executar operações de proteção de dados em um aplicativo, e o AppVault CR precisa residir no cluster onde o Trident Protect está instalado.  O pedido de configuração (CR) do AppVault é específico para o seu ambiente; você pode usar os exemplos desta página como guia ao criar pedidos de configuração do AppVault.
 
 
 
@@ -28,17 +28,17 @@ Antes de criar um AppVault CR, você precisa garantir que o AppVault e o control
 
 === Senhas do repositório do controlador de dados
 
-Quando você cria objetos AppVault usando o CRS ou o plug-in Trident Protect CLI, você pode instruir o Trident Protect para usar um segredo Kubernetes que contém senhas personalizadas para a criptografia do repositório Restic e do Kopia. Se você não especificar um segredo, o Trident Protect usará uma senha padrão.
+Ao criar objetos AppVault usando CRs ou o plugin Trident Protect CLI, você pode, opcionalmente, instruir o Trident Protect a usar um segredo do Kubernetes que contenha senhas personalizadas para a criptografia dos repositórios Restic e Kopia. Se você não especificar uma senha secreta, o Trident Protect usará uma senha padrão.
 
 * Ao criar manualmente CRs do AppVault, use o campo *spec.dataMoverPasswordSecretRef* para especificar o segredo.
-* Ao criar objetos AppVault usando o Trident Protect CLI, use o  `--data-mover-password-secret-ref` argumento para especificar o segredo.
+* Ao criar objetos do AppVault usando a CLI do Trident Protect, utilize o `--data-mover-password-secret-ref` argumento para especificar o segredo.
 
 
 
 
 ==== Crie um segredo de senha do repositório do mover de dados
 
-Use os exemplos a seguir para criar o segredo da senha. Quando você cria objetos AppVault, você pode instruir o Trident Protect para usar esse segredo para autenticar com o repositório do controlador de dados.
+Utilize os exemplos a seguir para criar a senha secreta. Ao criar objetos do AppVault, você pode instruir o Trident Protect a usar esse segredo para autenticar com o repositório de movimentação de dados.
 
 
 NOTE: Dependendo do motor de dados que você está usando, você só precisa incluir a senha correspondente para esse controlador de dados. Por exemplo, se você estiver usando Restic e não planeja usar o Kopia no futuro, você pode incluir apenas a senha Restic quando criar o segredo.
@@ -76,7 +76,7 @@ kubectl create secret generic my-optional-data-mover-secret \
 
 === Permissões de IAM de armazenamento compatível com S3
 
-Ao acessar o armazenamento compatível com S3, como Amazon S3, S3 genérico,  https://docs.netapp.com/us-en/storagegrid/s3/index.html["StorageGRID S3"^] , ou  https://docs.netapp.com/us-en/ontap/s3-config/["ONTAP S3"^] Ao usar o Trident Protect, você precisa garantir que as credenciais de usuário fornecidas tenham as permissões necessárias para acessar o bucket. Veja a seguir um exemplo de política que concede as permissões mínimas necessárias para acesso com o Trident Protect. Você pode aplicar essa política ao usuário que gerencia políticas de bucket compatíveis com o S3.
+Ao acessar armazenamento compatível com S3, como Amazon S3, S3 genérico, https://docs.netapp.com/us-en/storagegrid/s3/index.html["StorageGRID S3"^] , ou https://docs.netapp.com/us-en/ontap/s3-config/["ONTAP S3"^] Ao usar o Trident Protect, você precisa garantir que as credenciais de usuário fornecidas tenham as permissões necessárias para acessar o bucket. Segue abaixo um exemplo de uma política que concede as permissões mínimas necessárias para acesso ao Trident Protect. Você pode aplicar essa política ao usuário que gerencia as políticas de bucket compatíveis com o S3.
 
 [source, json]
 ----
@@ -444,7 +444,7 @@ tridentctl-protect create vault StorageGridS3 <vault-name> \
 
 == Ver informações do AppVault
 
-Você pode usar o plugin Trident Protect CLI para exibir informações sobre objetos AppVault que você criou no cluster.
+Você pode usar o plugin Trident Protect CLI para visualizar informações sobre os objetos do AppVault que você criou no cluster.
 
 .Passos
 . Exibir o conteúdo de um objeto AppVault:
@@ -477,7 +477,7 @@ tridentctl-protect get appvaultcontent gcp-vault \
 ----
 . Opcionalmente, para ver o AppVaultPath para cada recurso, use o `--show-paths` sinalizador .
 +
-O nome do cluster na primeira coluna da tabela só estará disponível se um nome de cluster tiver sido especificado na instalação do leme Trident Protect. Por exemplo `--set clusterName=production1`: .
+O nome do cluster na primeira coluna da tabela só estará disponível se um nome de cluster tiver sido especificado na instalação do Trident Protect no Helm. Por exemplo: `--set clusterName=production1` .
 
 
 
@@ -507,7 +507,7 @@ kubectl delete appvault <appvault-name> \
 
 
 --
-.Remova um AppVault usando a CLI do Trident Protect
+.Remova um AppVault usando a CLI do Trident Protect.
 --
 . Remova o objeto AppVault, substituindo `appvault-name` pelo nome do objeto AppVault para remover:
 +
