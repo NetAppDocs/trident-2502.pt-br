@@ -649,7 +649,7 @@ Uma nova link:https://docs.netapp.com/us-en/trident/trident-reference/pod-securi
 
 == Mudanças em 22,04
 
-A NetApp está continuamente melhorando e aprimorando seus produtos e serviços. Aqui estão alguns dos recursos mais recentes do Trident. Para versões anteriores, https://docs.netapp.com/us-en/trident/earlier-versions.html["Versões anteriores da documentação"] consulte .
+NetApp está continuamente aprimorando e melhorando seus produtos e serviços. Aqui estão alguns dos recursos mais recentes do Trident. Para versões anteriores, consulte as versões anteriores da documentação.
 
 
 IMPORTANT: Se você estiver atualizando de qualquer versão anterior do Trident e usar o Azure NetApp Files, o ``location`` parâmetro config agora é um campo único obrigatório.
