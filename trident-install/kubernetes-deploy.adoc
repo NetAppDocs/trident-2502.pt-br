@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: trident-get-started/kubernetes-deploy.html 
+permalink: trident-install/kubernetes-deploy.html 
 keywords: deploy, Trident, methods, operator, tridentctl, helm, tanzu, vmware 
 summary: 'Você pode instalar o Trident usando o operador Trident (manualmente ou usando o Helm) ou com `tridentctl`o . Este tópico fornece informações importantes para selecionar o processo de instalação certo para você.' 
 ---
@@ -40,7 +40,7 @@ O uso de configuração não multipathing ou o uso `find_multipaths: yes` de ou 
 
 Independentemente do seu caminho de instalação, você deve ter:
 
-* Privileges completo para um cluster Kubernetes compatível com execução de uma versão compatível do Kubernetes e requisitos de recursos habilitados. Reveja a link:requirements.html["requisitos"] para obter detalhes.
+* Privilégios completos em um cluster Kubernetes compatível, executando uma versão compatível do Kubernetes e com os requisitos de recursos ativados. Revise a link:../trident-get-started/requirements.html["requisitos"] para obter detalhes.
 * Acesso a um sistema de storage NetApp compatível.
 * Funcionalidade de montar volumes de todos os nós de trabalho do Kubernetes.
 * Um host Linux com `kubectl` (ou `oc`, se você estiver usando o OpenShift) instalado e configurado para gerenciar o cluster do Kubernetes que deseja usar.
@@ -55,7 +55,7 @@ TIP: Se você não se familiarizou com o link:../trident-get-started/intro.html[
 
 == Escolha o método de instalação
 
-Selecione o método de instalação correto para você. Você também deve rever as considerações link:kubernetes-deploy.html#move-between-installation-methods["movendo-se entre métodos"]antes de tomar sua decisão.
+Selecione o método de instalação mais adequado para você. Você também deve analisar as considerações para link:kubernetes-deploy.html#moving-between-installation-methods["movendo-se entre métodos"] antes de tomar sua decisão.
 
 
 

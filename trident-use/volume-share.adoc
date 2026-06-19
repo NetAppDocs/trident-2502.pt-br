@@ -141,7 +141,7 @@ Você pode excluir um volume compartilhado entre vários namespaces. O Trident r
 
 ==  `tridentctl get`Use para consultar volumes subordinados
 
-Usando o[`tridentctl` utilitário, você pode executar o `get` comando para obter volumes subordinados. Para obter mais informações, consulte o link:./Trident-reference/tridentctl.html[`tridentctl` comandos e opções].
+Utilizando o [`tridentctl` utilitário, você pode executar o  `get` comando para obter volumes subordinados. Para mais informações, consulte link:../trident-managing-k8s/tridentctl.html[`tridentctl` comandos e opções].
 
 [listing]
 ----
@@ -170,6 +170,5 @@ Bandeiras -
 
 Para saber mais sobre o acesso ao volume entre namespace:
 
-* link:https://cloud.netapp.com/blog/astra-blg-sharing-volumes-between-namespaces-say-hello-to-cross-namespace-volume-access["Compartilhamento de volumes entre namespaces: Diga olá ao acesso ao volume entre namespace"^]Visite .
 * Assista à demonstração no link:https://media.netapp.com/page/9071d19d-1438-5ed3-a7aa-ea4d73c28b7f/solutions-products["NetAppTV"^].
 
