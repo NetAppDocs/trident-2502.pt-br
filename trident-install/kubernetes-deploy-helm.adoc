@@ -16,6 +16,7 @@ Você pode implantar o operador Trident e instalar o Trident usando o Helm. Este
 
 
 
+[[critical-information-about-trident-25-02]]
 == Informações críticas sobre o Trident 25,02
 
 *Você deve ler as seguintes informações críticas sobre o Trident.*
@@ -36,14 +37,15 @@ O uso de configuração não multipathing ou o uso `find_multipaths: yes` de ou 
 ====
 
 
+[[deploy-the-trident-operator-and-install-trident-using-helm]]
 == Implante o operador Trident e instale o Trident usando o Helm
 
 Usando o Tridentlink:https://artifacthub.io/packages/helm/netapp-trident/trident-operator["Carta do leme"^], você pode implantar o operador Trident e instalar o Trident em uma etapa.
 
-Revise link:trident-install/kubernetes-deploy.html["a visão geral da instalação"] para garantir que você atendeu aos pré-requisitos de instalação e selecionou a opção de instalação correta para o seu ambiente.
+Revise link:kubernetes-deploy.html["a visão geral da instalação"] para garantir que você atendeu aos pré-requisitos de instalação e selecionou a opção de instalação correta para o seu ambiente.
 
 .Antes de começar
-Além do link:trident-install/kubernetes-deploy.html#before-you-deploy["pré-requisitos de implantação"] você precisa de link:https://v3.helm.sh/["Helm versão 3"^].
+Além do link:trident-install/kubernetes-deploy.html#before-you-begin["pré-requisitos de implantação"] você precisa de link:https://v3.helm.sh/["Helm versão 3"^].
 
 .Passos
 . Adicione o repositório Helm do Trident:
@@ -68,6 +70,7 @@ Você pode usar `helm list` para revisar detalhes de instalação, como nome, na
 
 
 
+[[pass-configuration-data-during-install]]
 == Passe os dados de configuração durante a instalação
 
 Há duas maneiras de passar dados de configuração durante a instalação:
@@ -94,6 +97,7 @@ helm install <name> netapp-trident/trident-operator --version 100.2502.0  --crea
 ----
 
 
+[[configuration-options]]
 == Opções de configuração
 
 Esta tabela e o `values.yaml` arquivo, que faz parte do gráfico Helm, fornecem a lista de chaves e seus valores padrão.
@@ -244,6 +248,7 @@ WARNING: Não remova a afinidade padrão do arquivo values.yaml. Quando você qu
 |===
 
 
+[[understanding-controller-pods-and-node-pods]]
 === Compreensão dos pods dos nós e dos pods do controlador
 
 O Trident é executado como um único pod de controlador, além de um pod de nó em cada nó de trabalho no cluster. O pod de nó deve estar em execução em qualquer host onde você queira montar um volume Trident potencialmente.

@@ -16,6 +16,7 @@ Você pode configurar o Azure NetApp Files como o back-end para o Trident. É po
 
 
 
+[[azure-netapp-files-driver-details]]
 == Detalhes do driver Azure NetApp Files
 
 O Trident fornece os seguintes drivers de armazenamento Azure NetApp Files para se comunicar com o cluster. Os modos de acesso suportados são: _ReadWriteOnce_ (RWO), _ReadOnlyMuy_ (ROX), _ReadWriteMany_ (RWX), _ReadWriteOncePod_ (RWOP).
@@ -37,6 +38,7 @@ RWO, ROX, RWX, RWOP
 |===
 
 
+[[considerations]]
 === Considerações
 
 * O serviço Azure NetApp Files não oferece suporte a volumes menores que 50 GiB. O Trident cria automaticamente volumes de 50 GiB se um volume menor for solicitado.
@@ -45,6 +47,7 @@ RWO, ROX, RWX, RWOP
 
 
 
+[[managed-identities-for-aks]]
 == Identidades gerenciadas para AKS
 
 O Trident é compatível link:https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["identidades gerenciadas"^]com clusters do Azure Kubernetes Services. Para aproveitar o gerenciamento simplificado de credenciais oferecido por identidades gerenciadas, você deve ter:
@@ -95,6 +98,7 @@ tridentctl install --cloud-provider="Azure" -n trident
 
 
 
+[[cloud-identity-for-aks]]
 == Identidade de nuvem para AKS
 
 A identidade na nuvem permite que os pods do Kubernetes acessem recursos do Azure autenticando como uma identidade de workload em vez de fornecendo credenciais explícitas do Azure.

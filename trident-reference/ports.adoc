@@ -16,6 +16,7 @@ Saiba mais sobre as portas que o Trident usa para comunicação.
 
 
 
+[[trident-ports]]
 == Portas Trident
 
 O Trident se comunica pelas seguintes portas:

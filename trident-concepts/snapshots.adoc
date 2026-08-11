@@ -16,6 +16,7 @@ Saiba mais sobre como o Trident lida com a criação de snapshots de volume para
 
 
 
+[[learn-about-volume-snapshot-creation]]
 == Saiba mais sobre a criação de instantâneos de volume
 
 * Para os `ontap-nas` drivers , `ontap-san`, , `gcp-cvs` e `azure-netapp-files` , cada volume persistente (PV) mapeia para um FlexVol volume como resultado, os snapshots de volume são criados como snapshots do NetApp. A tecnologia Snapshot da NetApp oferece mais estabilidade, escalabilidade, capacidade de recuperação e desempenho do que as tecnologias de snapshot da concorrência. Essas cópias snapshot são extremamente eficientes no tempo necessário para criá-las e no espaço de storage.

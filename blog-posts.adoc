@@ -16,6 +16,7 @@ Você pode encontrar ótimos blogs sobre NetApp Trident e Trident Protect aqui:
 
 
 
+[[trident-blogs]]
 == Trident blogs
 
 * 05 de Mar de 2025: link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Unlock-Seamless-iSCSI-Storage-Integration-A-Guide-to-FSxN-on-ROSA-Clusters-for/ba-p/459124["Desbloquear integração contínua de armazenamento iSCSI: Um guia para FSxN em clusters ROSA para AWS"^]
@@ -24,6 +25,7 @@ Você pode encontrar ótimos blogs sobre NetApp Trident e Trident Protect aqui:
 
 
 
+[[trident-protect-blogs]]
 == Blogs da Trident Protect
 
 * 13 de Mar de 2025: link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Crash-Consistent-Backup-and-Restore-Operations-for-OpenShift-Virtualization-VMs/ba-p/459417["Operações de backup e restauração consistentes com falhas para VMs de virtualização OpenShift"^]

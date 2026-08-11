@@ -21,6 +21,7 @@ NOTE: Você pode configurar o Trident Protect para congelar e descongelar sistem
 
 
 
+[[create-an-on-demand-snapshot]]
 == Crie um snapshot sob demanda
 
 Você pode criar um snapshot sob demanda a qualquer momento.
@@ -85,6 +86,7 @@ tridentctl-protect create snapshot <my_snapshot_name> --appvault <my_appvault_na
 ====
 
 
+[[create-an-on-demand-backup]]
 == Crie um backup sob demanda
 
 Você pode fazer backup de um aplicativo a qualquer momento.
@@ -166,6 +168,7 @@ tridentctl-protect create backup <my_backup_name> --appvault <my-vault-name> --a
 ====
 
 
+[[create-a-data-protection-schedule]]
 == Criar um cronograma de proteção de dados
 
 Uma política de proteção protege um aplicativo criando snapshots, backups ou ambos em um cronograma definido. Você pode optar por criar snapshots e backups por hora, diariamente, semanalmente e mensalmente, e especificar o número de cópias a reter.
@@ -263,6 +266,7 @@ tridentctl-protect create schedule <my_schedule_name> --appvault <my_appvault_na
 ====
 
 
+[[delete-a-snapshot]]
 == Eliminar um instantâneo
 
 Exclua os snapshots programados ou sob demanda que você não precisa mais.
@@ -278,6 +282,7 @@ kubectl delete snapshot <snapshot_name> -n my-app-namespace
 
 
 
+[[delete-a-backup]]
 == Eliminar uma cópia de segurança
 
 Exclua os backups programados ou sob demanda que você não precisa mais.
@@ -293,6 +298,7 @@ kubectl delete backup <backup_name> -n my-app-namespace
 
 
 
+[[check-the-status-of-a-backup-operation]]
 == Verifique o status de uma operação de backup
 
 Você pode usar a linha de comando para verificar o status de uma operação de backup em andamento, concluída ou falhou.
@@ -308,6 +314,7 @@ kubectl get backup -n <namespace_name> <my_backup_cr_name> -o jsonpath='{.status
 
 
 
+[[enable-backup-and-restore-for-azure-netapp-files-anf-operations]]
 == Habilite o backup e a restauração de operações do Azure-NetApp-Files (ANF)
 
 Se você instalou o Trident Protect, pode habilitar a funcionalidade de backup e restauração com uso eficiente de espaço para back-ends de armazenamento que utilizam a classe de armazenamento azure-netapp-files e foram criados antes do Trident 24.06. Essa funcionalidade opera com volumes NFSv4 e não consome espaço adicional do pool de capacidade.

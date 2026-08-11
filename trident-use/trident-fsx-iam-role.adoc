@@ -19,6 +19,7 @@ NOTE: Para autenticar usando uma função do AWS IAM, você deve ter um cluster 
 
 
 
+[[create-aws-secrets-manager-secret]]
 == Crie o segredo do AWS Secrets Manager
 
 Como o Trident estará emitindo APIs em um vserver do FSX para gerenciar o armazenamento para você, ele precisará de credenciais para fazer isso. A maneira segura de passar essas credenciais é através de um segredo do AWS Secrets Manager. Portanto, se você ainda não tiver um, precisará criar um segredo do AWS Secrets Manager que contenha as credenciais da conta vsadmin.
@@ -32,6 +33,7 @@ aws secretsmanager create-secret --name trident-secret --description "Trident CS
 ----
 
 
+[[create-iam-policy]]
 == Criar política de IAM
 
 O Trident também precisa de permissões da AWS para ser executado corretamente. Portanto, você precisa criar uma política que dê ao Trident as permissões de que ele precisa.
@@ -75,6 +77,7 @@ aws iam create-policy --policy-name AmazonFSxNCSIDriverPolicy --policy-document 
 ----
 
 
+[[create-an-iam-role-for-the-service-account]]
 === Crie uma função do IAM para a conta de serviço
 
 Depois de criar a política, use-a ao criar a função que será atribuída à conta de serviço em que o Trident será executado:

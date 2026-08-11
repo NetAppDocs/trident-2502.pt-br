@@ -21,6 +21,7 @@ NOTE: Quando você restaura um aplicativo, todos os ganchos de execução config
 
 
 
+[[namespace-annotations-and-labels-during-restore-and-failover-operations]]
 == Anotações e rótulos de namespace durante operações de restauração e failover
 
 Durante as operações de restauração e failover, rótulos e anotações no namespace de destino são feitos para corresponder aos rótulos e anotações no namespace de origem. Rótulos ou anotações do namespace de origem que não existem no namespace de destino são adicionados, e quaisquer rótulos ou anotações que já existem são sobrescritos para corresponder ao valor do namespace de origem. Rótulos ou anotações que existem apenas no namespace de destino permanecem inalterados.
@@ -38,6 +39,7 @@ Se você instalou o aplicativo de origem usando o Helm com o `--create-namespace
 
 
 
+[[example]]
 === Exemplo
 
 O exemplo a seguir apresenta um namespace de origem e destino, cada um com anotações e rótulos diferentes. Você pode ver o estado do namespace de destino antes e depois da operação e como as anotações e rótulos são combinados ou substituídos no namespace de destino.
@@ -100,6 +102,7 @@ A tabela a seguir ilustra o estado do namespace de destino de exemplo após a op
 |===
 
 
+[[restore-from-a-backup-to-a-different-namespace]]
 == Restaure de um backup para um namespace diferente
 
 Ao restaurar um backup para um namespace diferente usando um CR de BackupRestore, o Trident Protect restaura o aplicativo em um novo namespace e cria um CR de aplicativo para o aplicativo restaurado. Para proteger a aplicação restaurada, crie backups ou snapshots sob demanda, ou estabeleça um cronograma de proteção.
@@ -228,6 +231,7 @@ tridentctl-protect create backuprestore <my_restore_name> \
 ====
 
 
+[[restore-from-a-backup-to-the-original-namespace]]
 == Restaure de um backup para o namespace original
 
 Você pode restaurar um backup para o namespace original a qualquer momento.
@@ -349,6 +353,7 @@ tridentctl-protect create backupinplacerestore <my_restore_name> \
 ====
 
 
+[[restore-from-a-backup-to-a-different-cluster]]
 == Restaure de um backup para um cluster diferente
 
 Você pode restaurar um backup para um cluster diferente se houver um problema com o cluster original.
@@ -470,6 +475,7 @@ tridentctl-protect create backuprestore <restore_name> \
 ====
 
 
+[[restore-from-a-snapshot-to-a-different-namespace]]
 == Restauração de um snapshot para um namespace diferente
 
 Você pode restaurar dados de um snapshot usando um arquivo de recurso personalizado (CR) para um namespace diferente ou para o namespace de origem original. Ao restaurar um snapshot para um namespace diferente usando um CR de SnapshotRestore, o Trident Protect restaura o aplicativo em um novo namespace e cria um CR de aplicativo para o aplicativo restaurado. Para proteger a aplicação restaurada, crie backups ou snapshots sob demanda, ou estabeleça um cronograma de proteção.
@@ -602,6 +608,7 @@ tridentctl-protect create snapshotrestore <my_restore_name> \
 ====
 
 
+[[restore-from-a-snapshot-to-the-original-namespace]]
 == Restauração de um snapshot para o namespace original
 
 Você pode restaurar um snapshot para o namespace original a qualquer momento.
@@ -718,6 +725,7 @@ tridentctl-protect create snapshotinplacerestore <my_restore_name> \
 ====
 
 
+[[check-the-status-of-a-restore-operation]]
 == Verifique o status de uma operação de restauração
 
 Você pode usar a linha de comando para verificar o status de uma operação de restauração que está em andamento, concluiu ou falhou.

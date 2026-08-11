@@ -16,6 +16,7 @@ Aprenda a criar e usar drivers ONTAP nas com sua instalação do Trident. Esta s
 
 
 
+[[backend-configuration-options]]
 == Opções de configuração de back-end
 
 Consulte a tabela a seguir para obter as opções de configuração de back-end:
@@ -124,6 +125,7 @@ NOTE: Quando a lista de agregados é atualizada no SVM, a lista é atualizada au
 |===
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Opções de configuração de back-end para volumes de provisionamento
 
 Você pode controlar o provisionamento padrão usando essas opções na `defaults` seção da configuração. Para obter um exemplo, consulte os exemplos de configuração abaixo.
@@ -179,6 +181,7 @@ NOTE: O uso de grupos de política de QoS com Trident requer o ONTAP 9.8 ou post
 
 
 
+[[volume-provisioning-examples]]
 === Exemplos de provisionamento de volume
 
 Aqui está um exemplo com padrões definidos:
@@ -226,6 +229,7 @@ Os backends existentes de instalações anteriores provisionarão volumes confor
 
 
 
+[[minimal-configuration-examples]]
 == Exemplos mínimos de configuração
 
 Os exemplos a seguir mostram configurações básicas que deixam a maioria dos parâmetros padrão. Esta é a maneira mais fácil de definir um backend.
@@ -408,6 +412,7 @@ labels:
 ====
 
 
+[[examples-of-backends-with-virtual-pools]]
 == Exemplos de backends com pools virtuais
 
 Nos arquivos de definição de back-end de exemplo mostrados abaixo, padrões específicos são definidos para todos os pools de armazenamento, como `spaceReserve` em nenhum, `spaceAllocation` em falso e `encryption` em falso. Os pools virtuais são definidos na seção armazenamento.
@@ -593,6 +598,7 @@ storage:
 ====
 
 
+[[map-backends-to-storageclasses]]
 == Mapeie os backends para StorageClasses
 
 As seguintes definições do StorageClass referem-se <<Exemplos de backends com pools virtuais>>a . Usando o `parameters.selector` campo, cada StorageClass chama quais pools virtuais podem ser usados para hospedar um volume. O volume terá os aspetos definidos no pool virtual escolhido.
@@ -668,6 +674,7 @@ O Trident decidirá qual pool virtual é selecionado e garante que o requisito d
 
 
 
+[[update-datalif-after-initial-configuration]]
 == Atualização `dataLIF` após a configuração inicial
 
 Você pode alterar o dataLIF após a configuração inicial executando o seguinte comando para fornecer o novo arquivo JSON de back-end com dataLIF atualizado.
