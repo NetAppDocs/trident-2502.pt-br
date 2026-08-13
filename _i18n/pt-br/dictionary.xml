@@ -837,7 +837,6 @@
   <block id="c777be7f669397b0a376fe32ca5cd9c3" category="section-title">Frontens suportados (orquestradores)</block>
   <block id="710f95d40d121f27f89b0faa6e178133" category="paragraph">O Trident é compatível com vários mecanismos de contêiner e orquestradores, incluindo os seguintes:</block>
   <block id="7cc1edf2116d94e97b8f4a69079de132" category="list-text">Anthos On-Prem (VMware) e Anthos em bare metal 1,16</block>
-  <block id="30712450d512dae0e7becb73c6a439fb" category="list-text">Kubernetes 1,26 - 1,32</block>
   <block id="42113cf11e30b764619d3a98db65262d" category="list-text">Rancher Kubernetes Engine 2 (RKE2) v1.26.7-rke2r1, v1.28.5-rke2r1</block>
   <block id="201eb37826a33e35adff9119f25946bd" category="paragraph">O operador Trident é suportado com estas versões:</block>
   <block id="e42907190e2666646d57ade5c061e6e2" category="paragraph">O Trident também trabalha com uma série de outras ofertas do Kubernetes totalmente gerenciadas e autogeridas, incluindo o Google Kubernetes Engine (GKE), o Amazon Elastic Kubernetes Services (EKS), o</block>
@@ -870,7 +869,6 @@
   <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">Recurso</block>
   <block id="80afba45eb055fc9bdc48c90d1debd06" category="cell">Versão do Kubernetes</block>
   <block id="10f295a61d2a793ac8936a69cf458654" category="cell">É necessário ter portões?</block>
-  <block id="24493d2fad9ccf981611c84f3d863eb4" category="paragraph">1,26 - 1,32</block>
   <block id="bafd7322c6e97d25b6299b5d6fe8920b" category="paragraph">Não</block>
   <block id="e830b7e4d1fb7f84600876af87cb4381" category="cell">Instantâneos de volume</block>
   <block id="ea8ed249117e76cb53766e218fe2b7c7" category="cell">PVC a partir de instantâneos de volume</block>
@@ -901,7 +899,6 @@
   <block id="ce8468ce4398f1403e56c8d07fbfbdff" category="paragraph">Para instalações com ar-gapped, a lista a seguir é uma referência das imagens de contentor necessárias para instalar o Trident. Use o<block ref="4ebf280824868255c952dc529072ecb9" prefix=" " category="inline-code"></block> comando para verificar a lista de imagens de contentor necessárias.</block>
   <block id="7b5dfababf92391b5761944c63b0d3bb" category="cell">Versões do Kubernetes</block>
   <block id="aa92c4c233bc01609d957e469736b699" category="cell">Imagem do recipiente</block>
-  <block id="d14770b30eb9f7db4088f360204c02b5" category="cell">v1.26.0, v1.27.0, v1.28.0, v1.29.0, v1.30.0, v1.31.0, v1.32.0</block>
   <block id="ab5b520e06e8f60c2eb43897deda1dd9" category="list-text">docker.io/NetApp/Trident:25.02.0</block>
   <block id="78cd2bf2aaf1655ef471d7da97aa4ef9" category="list-text">docker.io/NetApp/Trident-AutoSupport:25,02</block>
   <block id="b55333d21cb50b1d1d34c529c999482f" category="list-text">provisionador do registry.k8s.io/sig-storage/csi:v5,2.0</block>
@@ -5214,8 +5211,6 @@
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">Compartilhar volumes NFS em namespaces</block>
   <block id="62486fa65fc31c383ace8989549632ad" category="sidebar">Use snapshots</block>
   <block id="b71ccf1062cee8c376a7eb37e3c42603" category="cell">Ativar encriptação LUKS. <block ref="569f9f91cdcc19909b8acbf6f423daf7" category="inline-link-macro-rx"></block>Consulte a .</block>
-  <block id="f7e1bdb9d12dcb4909e8a56dd591da30" category="list-text">OpenShift 4.13 - 4.18</block>
-  <block id="9655e6779bbfb76d89c5ff39269da4db" category="list-text">OpenShift 4.13-4.18</block>
   <block id="50b9f8f4650a278b466928c2105fc23a" category="list-text"><block ref="769cb50c95fd3a43c659aa73aba99e5b" prefix="" category="inline-code"></block>(requer que você especifique<block ref="aadd5cec42dbc02d51f62a1095401f59" prefix=" " category="inline-code"></block> )</block>
   <block id="03b866ae4a8a50619a4126154196606b" category="list-text"><block ref="c512b685438f41daa7386329a3b8f8d3" prefix="" category="inline-code"></block>(requer que você especifique<block ref="aadd5cec42dbc02d51f62a1095401f59" prefix=" " category="inline-code"></block> e<block ref="9199af27775b1a2a876e6d7b25540711" prefix=" " category="inline-code"></block> )</block>
   <block id="2cfd34c47c4dbe46650e40185474bd21" category="list-text"><block ref="6c25e6a6da95b3d583c6ec4c3f82ed4d" prefix="" category="inline-code"></block>(requer que você especifique<block ref="d5870327522a71f5b75f9d3793d0dc97" prefix=" " category="inline-code"></block> , e<block ref="4a04848e0e6e9423892ebc93ae61842d" prefix=" " category="inline-code"></block> )</block>
@@ -5475,6 +5470,13 @@
   <block id="9ea1dc44c501f59786a0dd2c5ebc2d21" category="list-text">Trident AutoSupport não coleta nem transmite Informações de Identificação Pessoal (PII) ou Informações Pessoais. Vem com uma <block ref="ea14b34590cee15ec565ad8fd8feca2e" category="inline-link-rx"></block> que não se aplica à própria imagem do contêiner Trident. Você pode saber mais sobre o compromisso da NetApp com a segurança e a confiança dos dados<block ref="ea3b01bc03342a227ac7c6848f1e44fa" category="inline-link-rx"></block>.</block>
   <block id="0aed33e870a02a203987e1f6cbeb75d8" category="list-text">Um problema comum que você pode encontrar ao usar Trident<block ref="5990d744db8a85d254742635736f0912" category="inline-link-rx"></block> é quando os segredos do locatário e do cliente vêm de um registro de aplicativo com permissões insuficientes. Para obter uma lista completa dos requisitos do Trident, consulte a <block ref="afedf4ee56554ea6e6b54e6aa206680c" category="inline-link-macro-rx"></block>configuração.</block>
   <block id="218a0c4bd3daf2a2ce3574281b7ca0b2" category="paragraph">Revise <block ref="d5658c9dfbfb4ef585182e92445a8919" category="inline-link-macro-rx"></block> para garantir que você atendeu aos pré-requisitos de instalação e selecionou a opção de instalação correta para o seu ambiente.</block>
-  <block id="3b09004494ad8605a5dd0f3024d25e71" category="paragraph">Além do <block ref="664da4bd07fc6e33aa43f13bb999ea26" category="inline-link-macro-rx"></block> você precisa de <block ref="fc0cdbd8defe0c7175199dd05a0f8e76" category="inline-link-macro-rx"></block>.</block>
   <block id="b7bec5d0d77ca93cd7a03308720c371e" category="paragraph">Seja implantando manualmente ou usando o Helm, o operador Trident é uma ótima maneira de simplificar a instalação e gerenciar dinamicamente os recursos do Trident. Você pode até mesmo <block ref="a1f2adae0e8434fa57fbe3e21b52345e" category="inline-link-macro-rx"></block> usando os atributos no <block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> recurso personalizado (CR).</block>
+  <block id="3b30a7aea8a6f98824f61888e8628449" category="inline-link-macro">Ciclo de vida do Red Hat Extended Update Support (EUS)</block>
+  <block id="6b62784ed0975ba9ec1e2f69af860e25" category="admonition">Trident continua a oferecer suporte a versões mais antigas do OpenShift em alinhamento com o <block ref="d73f30265a77d175825591fd08508146" category="inline-link-macro-rx"></block>, mesmo que elas dependam de versões do Kubernetes que não são mais oficialmente suportadas upstream. Ao instalar Trident nesses casos, você pode ignorar com segurança quaisquer mensagens de aviso sobre a versão do Kubernetes.</block>
+  <block id="58830b43d96c301076f2636c9bb946d5" category="list-text">Kubernetes 1.25 - 1.32</block>
+  <block id="f0d98f3855f063d6ad8de4e10d9cf4ca" category="list-text">OpenShift 4.12 - 4.18</block>
+  <block id="20b6ad85e9b94fb2edd0bbaa1a135ec2" category="list-text">OpenShift 4.12- 4.18</block>
+  <block id="2d95fd2a9f3bf1dcac56e3de82d288ad" category="paragraph">1.25 - 1.32</block>
+  <block id="2ec43b8882dfc130c999d1ebfae88d87" category="cell">v1.25.0, v1.26.0, v1.27.0, v1.28.0, v1.29.0, v1.30.0, v1.31.0, v1.32.0</block>
+  <block id="db7fc8df66e930e05282807a6ebd58f4" category="paragraph">Além do <block ref="1feb3274d112f2cef694d133af384cac" category="inline-link-macro-rx"></block> você precisa de <block ref="fc0cdbd8defe0c7175199dd05a0f8e76" category="inline-link-macro-rx"></block>.</block>
 </blocks>
